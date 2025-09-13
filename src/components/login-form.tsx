@@ -1,3 +1,5 @@
+'use client'
+
 import { cn } from "@/lib/utils"
 import {
   Card,
@@ -6,8 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card"
-import { signIn } from "next-auth/react"
-import { Button } from "./ui/button"
+import { GoogleButton } from "./GoogleButton"
 
 export function LoginForm({
   className,
@@ -26,9 +27,7 @@ export function LoginForm({
           <form>
             <div className="flex flex-col gap-6">
               <div className="flex flex-col gap-3">
-                <Button onClick={() => signIn('google')} variant="outline" className="w-full">
-                Sign in with Google
-                </Button>
+              <GoogleButton />
               </div>
             </div>
           </form>
