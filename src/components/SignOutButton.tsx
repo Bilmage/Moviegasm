@@ -26,8 +26,22 @@ export function SignOutButton({
     )
   }
 
-  if (!session) {
+  if (!session && process.env.NODE_ENV === 'production') {
     return null
+  }
+
+  // In development, show a "Back to Login" button when no session
+  if (!session) {
+    return (
+      <Button
+        onClick={() => window.location.href = '/'}
+        variant={variant}
+        size={size}
+        className={className}
+      >
+        Back to Login
+      </Button>
+    )
   }
 
   const handleSignOut = () => {
