@@ -6,10 +6,13 @@ interface ApiConfig {
 }
 
 const apiConfig: ApiConfig = {
-  baseUrl: process.env.NEXT_PUBLIC_API_URL || "https://api.themoviedb.org/3/",
+  baseUrl:
+    process.env.NEXT_PUBLIC_API_BASE_URL || "https://api.themoviedb.org/3/",
   apiKey: process.env.NEXT_PUBLIC_API_KEY || "",
-  originalImage: (imgPath: string): string => `https://image.tmdb.org/t/p/original/${imgPath}`,
-  w500Image: (imgPath: string): string => `https://image.tmdb.org/t/p/w500/${imgPath}`,
+  originalImage: (imgPath: string): string =>
+    `https://image.tmdb.org/t/p/original/${imgPath}`,
+  w500Image: (imgPath: string): string =>
+    `https://image.tmdb.org/t/p/w500/${imgPath}`,
 };
 
 export default apiConfig;
