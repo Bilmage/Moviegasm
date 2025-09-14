@@ -29,7 +29,12 @@ export interface Movie {
   popularity: number;
   video: boolean;
   runtime?: number;
-  genres?: Array<{ id: number; name: string }>;
+  genres?: Array<Genres>;
+}
+
+export interface Genres {
+  id: number;
+  name: string;
 }
 
 export interface TVShow {
