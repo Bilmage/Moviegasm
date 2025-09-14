@@ -28,6 +28,8 @@ export interface Movie {
   original_title: string;
   popularity: number;
   video: boolean;
+  runtime?: number;
+  genres?: Array<{ id: number; name: string }>;
 }
 
 export interface TVShow {
