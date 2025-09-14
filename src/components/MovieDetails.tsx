@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { useGetDetailsQuery, useGetCreditsQuery, useGetVideosQuery } from '@/store/api/tmdbApi'
+import { Movie } from '@/store/interfaces/types'
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
 import { Badge } from './ui/badge'
 import { Button } from './ui/button'
@@ -15,17 +16,20 @@ interface MovieDetailsProps {
 }
 
 export function MovieDetails({ movieId }: MovieDetailsProps) {
-  const { data: movie, isLoading: movieLoading } = useGetDetailsQuery({
+  const { data: movieData, isLoading: movieLoading } = useGetDetailsQuery({
+    category: 'movie',
+    id: movieId
+  })
+  
+  // Type assertion since we know we're fetching a movie
+  const movie = movieData as Movie | undefined
+
+  const { data: credits } = useGetCreditsQuery({
     category: 'movie',
     id: movieId
   })
 
-  const { data: credits, isLoading: creditsLoading } = useGetCreditsQuery({
-    category: 'movie',
-    id: movieId
-  })
-
-  const { data: videos, isLoading: videosLoading } = useGetVideosQuery({
+  const { data: videos } = useGetVideosQuery({
     category: 'movie',
     id: movieId
   })
